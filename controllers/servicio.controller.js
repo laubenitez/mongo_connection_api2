@@ -28,7 +28,8 @@ exports.registrar = async (req, res) => {
         let servicioNuevo = {
             nombre: req.body.nombre,
             precio: req.body.precio,
-            duracionMinutos: req.body.duracionMinutos
+            duracionMinutos: req.body.duracionMinutos,
+            categoria: req.body.categoria
         }
 
         const servicios = await Servicio.create(servicioNuevo);
@@ -44,7 +45,8 @@ exports.actualizar = async (req, res) => {
         const actualizarServicio = {
             nombre: req.body.nombre,
             precio: req.body.precio,
-            duracionMinutos: req.body.duracionMinutos
+            duracionMinutos: req.body.duracionMinutos,
+            categoria: req.body.categoria
         }
 
         const servicioActualizado = await Servicio.findOneAndUpdate(

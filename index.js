@@ -2,6 +2,7 @@ require("node:dns").setServers(["1.1.1.1", "8.8.8.8"]);
 
 require('dotenv').config();
 
+
 const express = require('express');
 const conectarDB = require('./config/connection');
 
@@ -39,5 +40,19 @@ app.get('/productos/nombre/:nombre', productoController.consultarId)
 app.post('/productos', productoController.registrar)
 app.put('/productos/nombre/:nombre', productoController.actualizar)
 app.delete('/productos/nombre/:nombre', productoController.eliminar)
+
+
+
+app.get('/tiendita', function(req,res){
+   fetch('https://mongo-connection-api2.onrender.com/clientes')
+   .then(response => response.json())
+   .then(data => {
+       res.render('pages/clientes',
+           {clientes:data}
+       )
+   });
+});
+
+
 
 app.listen(1999);
