@@ -4,7 +4,9 @@ require('dotenv').config();
 
 
 const express = require('express');
+
 const conectarDB = require('./config/connection');
+
 
 // modelo
 const Cliente = require('./models/cliente.model');
@@ -17,6 +19,7 @@ const productoController = require('./controllers/producto.controller');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs');
 
 conectarDB();
 
